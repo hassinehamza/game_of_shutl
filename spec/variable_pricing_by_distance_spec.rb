@@ -6,8 +6,8 @@ describe 'Variable pricing by distance' do
       quote: {
         pickup_postcode:   'SW1A 1AA',
         delivery_postcode: 'EC2A 3LT'
-      }.to_json
-    }
+      }
+    }.to_json
 
     post '/quotes', request
     expect(JSON.parse(last_response.body)['quote']['price']).to eql 679
@@ -16,8 +16,8 @@ describe 'Variable pricing by distance' do
       quote: {
         pickup_postcode:   'AL1 5WD',
         delivery_postcode: 'EC2A 3LT'
-      }.to_json
-    }
+      }
+    }.to_json
 
     post '/quotes', request
 
