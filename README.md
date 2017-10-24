@@ -6,7 +6,7 @@ Throughout the test we're looking for great ruby style, driving your code throug
 
 Please don't spend more than 90 minutes on the test - it's fine not to complete all the features - just make sure that the features you do complete are done to a standard that you're happy with. Please complete the features in order.
 
-To submit, fork our repo and add 'samsworldofno' as a collaborator. Bonus points for committing along the way and highlighting in your commit logs when a given feature was completed.
+To submit, fork our repo and share the link back to us. Bonus points for committing along the way and highlighting in your commit logs when a given feature was completed.
 
 On the name: Our old tech test was the [game of life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) - but the Game of Shutl is much more interesting :)
 
