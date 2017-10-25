@@ -12,7 +12,11 @@ module GameOfShutl
 
     def getVehicle(type)
       vehicle =  @listOfVehicle[type]
+      if vehicle == nil
+        raise Exception.new("Vehicle is Nil ,We cannot found")
+      end
       return vehicle
     end
+
   end
 end
