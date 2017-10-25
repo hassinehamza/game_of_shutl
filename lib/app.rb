@@ -14,8 +14,8 @@ module GameOfShutl
 
       quote = json_params['quote']
 
-      price = Price.new
-      basicPrice = price.calculBasicPrice(quote['pickup_postcode'], quote['delivery_postcode'])
+      priceController = PriceController.new
+      basicPrice = priceController.calculBasicPrice(quote['pickup_postcode'], quote['delivery_postcode'])
 
       {
         quote: {
@@ -31,8 +31,8 @@ module GameOfShutl
       quote = json_params['quote']
       vehicleController = VehicleController.new
       vehicle = vehicleController.getVehicle(quote['vehicle'])
-      price = Price.new
-      priceByVehicle = price.priceBasedOnVehicle(quote['pickup_postcode'], quote['delivery_postcode'], vehicle)
+      priceController = PriceController.new
+      priceByVehicle = priceController.priceBasedOnVehicle(quote['pickup_postcode'], quote['delivery_postcode'], vehicle)
 
       {
         quote: {
