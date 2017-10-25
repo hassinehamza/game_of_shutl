@@ -5,6 +5,9 @@ describe GameOfShutl::Price do
   let(:price) do
     GameOfShutl::Price.new
   end
+  let(:vehicleController) do
+    GameOfShutl::VehicleController.new
+  end
 
   describe 'calculatBasicPrice method' do
     it 'converts the postcodes to base-32 and subtracts delivery from pickup and calculate basic price' do
@@ -19,6 +22,16 @@ describe GameOfShutl::Price do
       delivery_postcode = 'EC2A 3LT'
 
       expect(price.calculBasicPrice(pickup_postcode, delivery_postcode)).to eq 656
+    end
+  end
+
+  describe 'priceBasedOnVehicle method' do
+    it 'calculate basic price and add to it vehicle fees' do
+      pickup_postcode =  'AL1 5WD'
+      delivery_postcode = 'EC2A 3LT'
+      vehicle = vehicleController.getVehicle('bicycle')
+
+      expect(price.priceBasedOnVehicle(pickup_postcode, delivery_postcode, vehicle)).to eq 721.6
     end
   end
 end
