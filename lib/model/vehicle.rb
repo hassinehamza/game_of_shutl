@@ -1,14 +1,12 @@
 module GameOfShutl
   class Vehicle
-    attr_reader :type, :markup
+    attr_accessor :type, :markup, :priceLimit, :nextVehicle
 
-    def initialize(type, markup)
-      @type = type
-      @markup = markup
+    def initialize(params)
+      params.each do |k,v|
+        instance_variable_set("@#{k}", v) unless v.nil?
+      end
     end
 
-    def type
-      @type
-    end
   end
 end
