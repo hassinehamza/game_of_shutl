@@ -1,13 +1,13 @@
 module GameOfShutl
   class PriceController
 
-    def calculBasicPrice(pickup_postcode, delivery_postcode)
+    def calcul_basic_price(pickup_postcode, delivery_postcode)
       price = ((pickup_postcode.to_i(36) - delivery_postcode.to_i(36))/1000).abs
     end
 
-    def priceBasedOnVehicle(pickup_postcode, delivery_postcode, vehicle)
-      basicprice = calculBasicPrice(pickup_postcode, delivery_postcode)
-      priceBasedOnVehicle =  basicprice + basicprice * vehicle.markup
+    def price_based_on_vehicle(pickup_postcode, delivery_postcode, vehicle)
+      basic_price =calcul_basic_price(pickup_postcode, delivery_postcode)
+      price_based_on_vehicle =  basic_price + basic_price * vehicle.markup
     end
   end
 end
