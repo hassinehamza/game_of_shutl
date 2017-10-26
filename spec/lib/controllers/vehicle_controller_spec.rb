@@ -21,4 +21,17 @@ describe GameOfShutl::VehicleController do
     end
 
   end
+
+  describe 'find_vehicle_by_products' do
+    it 'should find the smallest required vehicle based only on the volumetrics of the produts' do
+      products = [{
+        'weight' => 10,
+        'width' => 50,
+        'height' => 50,
+        'length' => 50
+      }]
+
+      expect((vehicle_controller.find_vehicle_by_products(products)).type).to eq 'parcel_car'
+    end
+  end
 end

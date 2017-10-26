@@ -63,5 +63,22 @@ module GameOfShutl
       }.to_json
     end
 
+    post '/quotes/vehicle_by_volumetrics' do
+
+      quote = json_params['quote']
+      vehicle_controller = VehicleController.new
+      vehicle = vehicle_controller.find_vehicle_by_products(quote['products'])
+      price_controller = PriceController.new
+      price_based_on_vehicle = price_controller.price_based_on_vehicle(quote['pickup_postcode'], quote['delivery_postcode'], vehicle)
+
+      {
+        quote: {
+          pickup_postcode: quote['pickup_postcode'],
+          delivery_postcode: quote['delivery_postcode'],
+          vehicle: vehicle.type,
+          price: price_based_on_vehicle
+        }
+      }.to_json
+    end
   end
 end
