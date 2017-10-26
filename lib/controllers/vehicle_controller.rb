@@ -62,7 +62,8 @@ module GameOfShutl
       return vehicle
     end
 
-    def find_vehicle_by_products(products)
+    def find_vehicle_by_products(products, basic_veh = nil)
+      vehicle = basic_veh ||= @list_vehicles[SMALLEST_VEHICLE]
       weight, width, height, length = 0, 0, 0, 0
       products.each do |product|
         weight += product['weight']
@@ -70,12 +71,12 @@ module GameOfShutl
         height += product['height']
         length += product['length']
       end
-      vehicle = @list_vehicles[SMALLEST_VEHICLE]
       while(vehicle.capacity.weight < weight && vehicle.capacity.width < width &&
             vehicle.capacity.height < height && vehicle.capacity.weight < weight)
             vehicle = @list_vehicles[vehicle.next_vehicle]
       end
       return vehicle
     end
+
   end
 end

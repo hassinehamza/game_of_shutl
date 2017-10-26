@@ -33,5 +33,16 @@ describe GameOfShutl::VehicleController do
 
       expect((vehicle_controller.find_vehicle_by_products(products)).type).to eq 'parcel_car'
     end
+
+    it 'should find the adequated vehicle based on the volumetrics of the produts and it should be greater than the vehicle specified' do
+      products = [{
+        'weight' => 10,
+        'width' => 50,
+        'height' => 50,
+        'length' => 50
+      }]
+      basic_vehicle = vehicle_controller.get_vehicle('small_van')
+      expect((vehicle_controller.find_vehicle_by_products(products, basic_vehicle)).type).to eq 'small_van'
+    end
   end
 end

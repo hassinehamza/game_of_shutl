@@ -17,7 +17,7 @@ describe GameOfShutl::PriceController do
 
         expect(price_controller.calcul_basic_price(pickup_postcode, delivery_postcode)).to eq 679
     end
-    it 'calculate variable price by distance' do
+    it 'calculates variable price by distance' do
       pickup_postcode =  'AL1 5WD'
       delivery_postcode = 'EC2A 3LT'
 
@@ -25,8 +25,8 @@ describe GameOfShutl::PriceController do
     end
   end
 
-  describe 'priceBasedOnVehicle method' do
-    it 'calculate basic price and add to it vehicle fees' do
+  describe 'price_based_on_vehicle method' do
+    it 'calculates basic price and add to it vehicle fees' do
       pickup_postcode =  'AL1 5WD'
       delivery_postcode = 'EC2A 3LT'
       vehicle = vehicle_controller.get_vehicle('bicycle')
