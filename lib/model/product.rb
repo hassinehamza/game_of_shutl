@@ -1,6 +1,6 @@
 module GameOfShutl
-  class Vehicle
-    attr_accessor :type, :markup, :price_limit, :next_vehicle, :capacity
+  class Product
+    attr_accessor :weight, :width, :height, :length
 
     def initialize(params)
       params.each do |k,v|
