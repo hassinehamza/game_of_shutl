@@ -15,14 +15,9 @@ For each feature , we created service that responds to a POST url
 * Variable Prices By Distance : /quotes/basic_price
 * Simple Variable Prices By Vehicle : /quotes/price_by_vehicle
 * Vehicle Price Limits: /quotes/vehicle_by_price_limit
-* Complex Volumetrics: /quotes/vehicle_by_volumetrics
+* Complex Volumetrics (__completed service that takes into consideration all the features__): /quotes
 
-and at the end I created a created a  __completed service that takes into consideration all the features__
 
-* all features : _/quotes_
-<p>
-
-</p>
 The purpose of that :
 
   - __more flexiblilty API :__  we give the opportunity to the user to consume the service he wants according to the feature he wishes to take into consideration
@@ -164,41 +159,6 @@ The vehicle attribute can be specified or NOT in the request.
 
 Another feature of Shutl is that if the vehicle is not specifed, we calculate what vehicle is required based upon the volumetrics (weights and dimensions) of the product(s).
 
-__NB__: In this feature , the service just calculate the required vehicle ( and price ) based _ONLY_ on volumetrics. It doesn't take into consideration the limit distance of the vehicle.
-
-Build a service that responds to a POST to '/quotes/vehicle_by_volumetrics', with the following request structure :
-
-    {
-      "quote": {
-        "pickup_postcode":   "SW1A 1AA",
-        "delivery_postcode": "EC2A 3LT",
-        "products" : [
-          {
-            weight: 10,
-            width: 50,
-            height: 50,
-            length: 50
-          }
-        ]
-      }
-    }
-
-and responds with appropriate vehicle and price .
-
-
-Weight is specified in kilograms, dimensions in centimetres.
-
-The service should then calculate the smallest possible vehicle which could be used for this job. The vehicle capacities are:
-
-* bicycle: Weight 3kg, Capacity: L30 x W25 x H10 cm
-* motorbike: Weight: 6kg Max. Capacity: L35 x W25 x H25 cm
-* parcel_car: Weight: 50kg Max. Capacity: L100 x W100 x H75 cm
-* small_van: Weight: 400kg Max. Capacity: L133 x W133 x H133 cm
-* large_van: unlimited
-
-
-## A Completed Service :
-
 Build a completed service that takes into consideration __all__ the previous features and responds to a POST to '/quotes', with the following request structure:
 
           {
@@ -227,6 +187,21 @@ Build a completed service that takes into consideration __all__ the previous fea
                "price": 814.8
              }
            }
+
+
+and responds with appropriate vehicle and price .
+
+__NB__: __this is is thr completed service that takes into consideration all the features__
+
+Weight is specified in kilograms, dimensions in centimetres.
+
+The service should then calculate the smallest possible vehicle which could be used for this job. The vehicle capacities are:
+
+* bicycle: Weight 3kg, Capacity: L30 x W25 x H10 cm
+* motorbike: Weight: 6kg Max. Capacity: L35 x W25 x H25 cm
+* parcel_car: Weight: 50kg Max. Capacity: L100 x W100 x H75 cm
+* small_van: Weight: 400kg Max. Capacity: L133 x W133 x H133 cm
+* large_van: unlimited
 
 
 ## TODO : Icebox

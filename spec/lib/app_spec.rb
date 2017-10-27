@@ -110,40 +110,6 @@ end
 
 describe 'Vechicle by volumetrics Service' do
 
-
-  it 'responds to POST /quotes/vehicle_by_volumetrics with JSON response and required vehicle and price' do
-    request = {
-              quote: {
-                pickup_postcode:   'SW1A 1AA',
-                delivery_postcode: 'EC2A 3LT',
-                products: [
-                  {
-                    weight: 10,
-                    width: 5,
-                    height: 10,
-                    length: 5
-                  },
-                  {
-                    weight: 5,
-                    width: 50,
-                    height: 50,
-                    length: 50
-                  },
-                ]
-              }
-            }.to_json
-
-    post '/quotes/vehicle_by_volumetrics', request
-    expect(last_response).to be_ok
-
-    quote = JSON.parse(last_response.body)['quote']
-
-    expect(quote['pickup_postcode']).to eql "SW1A 1AA"
-    expect(quote['delivery_postcode']).to eql "EC2A 3LT"
-    expect(quote['vehicle']).to eq "parcel_car"
-    expect(quote['price']).to eql 814.8
-  end
-
   it 'responds to POST /quotes to calculate the required vehicle and price based on distance and volumetrics of the products' do
     request = {
               quote: {

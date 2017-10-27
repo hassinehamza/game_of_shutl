@@ -4,6 +4,7 @@ module GameOfShutl
     SMALLEST_VEHICLE = 'bicycle'
 
     def initialize
+      #liste of vehicle with their properties
       @list_vehicles = {  'bicycle' => Vehicle.new(:type => 'bicycle',
                                                   :markup => 0.1,
                                                   :price_limit => 500,
@@ -46,14 +47,21 @@ module GameOfShutl
                         }
     end
 
+    #
+    # method returns a vehicle object based on its type
+    #
     def get_vehicle(type)
       vehicle = @list_vehicles[type]
+      #raise exception if vehicle is not in the list
       if vehicle == nil
-        raise Exception.new("Vehicle is Nil ,We cannot found")
+        raise Exception.new("Vehicle is Nil ,We cannot found it")
       end
       return vehicle
     end
 
+    #
+    # methods returns a vehicle object that satisfies the price_limit
+    #
     def find_vehicle_by_price(vehicle_type, price)
       vehicle = @list_vehicles[vehicle_type] ||= @list_vehicles[SMALLEST_VEHICLE]
       while( price > vehicle.price_limit)
@@ -62,9 +70,17 @@ module GameOfShutl
       return vehicle
     end
 
+    #
+    # methods returns a vehicle that satifies products volumetrics
+    # => @attribute products : an array of hash
+    # => @attribute basic_veh : is an optional attribute
+    #
     def find_vehicle_by_products(products, basic_veh = nil)
+      # vehicle is initialized basic_veh if it is specifed
+      # otherwise vehicle is initialized as SMALLEST_VEHICLE
       vehicle = basic_veh ||= @list_vehicles[SMALLEST_VEHICLE]
       weight, width, height, length = 0, 0, 0, 0
+      # we assume that the volumetrics are simply to be summed together
       products.each do |product|
         weight += product['weight']
         width += product['width']
